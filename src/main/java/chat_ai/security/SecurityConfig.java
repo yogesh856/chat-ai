@@ -34,6 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()   // register/login sabke liye open
                         .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/auth/**", "/ws-chat/**").permitAll()
                         .anyRequest().authenticated()              // baaki sab authenticated hone chahiye
                 )
                 .sessionManagement(sm -> sm
